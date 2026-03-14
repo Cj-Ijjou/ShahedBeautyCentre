@@ -1,0 +1,450 @@
+/* ===== Reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Base colours & fonts ===== */
+:root {
+  --bg-grey: #d5dae3;        /* page background */
+  --panel-grey: #cfd3dd;     /* sections */
+  --panel-dark: #b9beca;
+  --text-main: #222222;
+  --text-muted: #555555;
+  --accent: #111111;         /* nav / headings */
+  --border-light: #e3e5ec;
+  --white: #ffffff;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg-grey);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ===== Layout ===== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+/* ===== Header / Nav ===== */
+.main-header {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* ✅ ONE logo-circle rule (no duplicates) */
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;       /* keeps image inside circle */
+  flex-shrink: 0;
+  background-color: var(--accent); /* shows if image fails to load */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.logo-text h1 {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.logo-text p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.logo-link {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.logo-link:hover {
+  opacity: 0.8;
+}
+
+/* Nav */
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover {
+  border-color: var(--accent);
+}
+
+.main-nav a.active {
+  border-color: var(--accent);
+}
+
+/* ===== HIGHLIGHT CARDS (Home) ===== */
+.highlight-cards {
+  background-color: var(--panel-grey);
+  padding: 3rem 2rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  min-height: 260px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at left, rgba(255,255,255,0.35), transparent 55%);
+}
+
+.card h3,
+.card p {
+  position: absolute;
+  left: 2rem;
+  color: var(--white);
+}
+
+.card h3 {
+  top: 2.2rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.card p {
+  bottom: 2.2rem;
+  max-width: 70%;
+  font-size: 0.95rem;
+}
+
+/* ===== HERO (Home) ===== */
+.hero {
+  background-color: var(--panel-grey);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  font-size: 2.4rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+/* Button */
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 2.5rem;
+  border-radius: 0;
+  background-color: var(--accent);
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border: 1px solid var(--accent);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+/* ===== Locations section (Home) ===== */
+.locations-section {
+  background-color: var(--panel-grey);
+  padding: 3rem 2rem 3.5rem;
+}
+
+.page-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-heading h2 {
+  font-size: 1.9rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.page-heading p {
+  font-size: 0.98rem;
+  color: var(--text-main);
+}
+
+/* two cards side by side */
+.locations-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.location-card {
+  flex: 1 1 260px;
+  background-color: var(--panel-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.location-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.location-content {
+  padding: 1.4rem 1.6rem 1.6rem;
+}
+
+.location-card h3 {
+  font-size: 1.1rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.location-card p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Services page alternating layout ===== */
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 60px 10%;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.service-row.reverse {
+  direction: rtl;
+}
+
+.service-row.reverse .service-text {
+  direction: ltr;
+}
+
+.service-image img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.service-text h3 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.service-time {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #b38b59;
+}
+
+/* ===== Contact page (scoped so it won't affect other pages) ===== */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Contact panels */
+.contact-form-wrapper,
+.contact-details {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+/* Contact form controls */
+.contact-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border-light);
+  background: var(--white);
+  font: inherit;
+}
+
+.form-note {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.hours-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+/* Keep your location card format, BUT prevent the big grey panel look in the sidebar */
+.contact-details .locations-section {
+  background: transparent;
+  padding: 0;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+}
+
+.contact-details .locations-section .locations-grid {
+  margin-top: 1rem;
+}
+
+/* ===== Footer ===== */
+.main-footer {
+  background-color: var(--white);
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .main-nav {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  main {
+    padding: 1.8rem 1rem 2.5rem;
+  }
+
+  .highlight-cards,
+  .hero,
+  .locations-section {
+    padding: 2.2rem 1.4rem;
+  }
+
+  .card h3 {
+    left: 1.4rem;
+    top: 1.8rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.2em;
+  }
+
+  .card p {
+    left: 1.4rem;
+    bottom: 1.7rem;
+    max-width: 80%;
+  }
+
+  .locations-grid {
+    flex-direction: column;
+  }
+
+  .service-row {
+    grid-template-columns: 1fr;
+  }
+
+  .service-row.reverse {
+    direction: ltr;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}

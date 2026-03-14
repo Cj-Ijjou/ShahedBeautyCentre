@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahed Beauty Centre | Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-area">
+      <div class="logo-circle"><img src="images/logo.jpg" alt="Shahed Beauty Centre logo"></div>
+      <div class="logo-text">
+        <h1><a href="index.html" class="logo-link">Shahed Beauty Centre</a></h1>
+        <p>Glow with confidence.</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <h2>Contact & Booking</h2>
+      <p>Send us a message and we’ll help you plan your next beauty visit.</p>
+    </section>
+
+    <section class="contact-layout">
+      <!-- LEFT: booking form -->
+      <div class="contact-form-wrapper">
+        <form id="bookingForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone (WhatsApp)</label>
+            <input id="phone" name="phone" type="tel" placeholder="+971 5X XXX XXXX" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Preferred Service</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Facial Treatment</option>
+              <option>Haircut & Styling</option>
+              <option>Color & Highlights</option>
+              <option>Manicure / Pedicure</option>
+              <option>Makeup</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input id="date" name="date" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <input id="time" name="time" type="time" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message / Special Requests</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us what you’re looking for"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Book via WhatsApp</button>
+          <p class="form-note">By tapping “Book via WhatsApp” you’ll open WhatsApp with your message ready to send.</p>
+        </form>
+      </div>
+
+      <!-- RIGHT: details -->
+      <aside class="contact-details">
+        <h3>Visit Shahed Beauty Centre</h3>
+
+        <p><strong>Phone / WhatsApp:</strong><br />
+          <a href="tel:+971504909769">+971 50 490 9769</a>
+        </p>
+
+        <h3>Opening Hours</h3>
+        <ul class="hours-list">
+          <li>Saturday – Thursday: 10:00 AM – 10:00 PM</li>
+          <li>Friday: 10:00 AM – 3:00 PM</li>
+        </ul>
+
+        <section class="locations-section">
+          <h3>Our Locations</h3>
+          <p>Visit Shahed Beauty Centre at one of our Fujairah branches.</p>
+
+          <div class="locations-grid">
+            <a href="YOUR_GOOGLE_MAPS_LINK_1" class="location-card" target="_blank" rel="noopener">
+              <img src="images/Screenshot 2026-03-02 002342.png" alt="Al Salam Branch Exterior">
+              <div class="location-content">
+                <h4>Al Salam Branch</h4>
+                <p>Al Salam Rd – opp. Old Etisalat<br>Al Mahattah – Fujairah</p>
+              </div>
+            </a>
+
+            <a href="YOUR_GOOGLE_MAPS_LINK_2" class="location-card" target="_blank" rel="noopener">
+              <img src="images/2.png" alt="Eid Mussalla Branch Exterior">
+              <div class="location-content">
+                <h4>Eid Mussalla Branch</h4>
+                <p>48FP+44Q – Eid Mussalla Rd<br>Al Mahattah – Fujairah</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 Shahed Beauty Centre. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // IMPORTANT: set your WhatsApp number in international format with NO + or spaces
+    // UAE example: +971504909769 => "971504909769"
+    const WHATSAPP_NUMBER = "971504909769";
+
+    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value.trim();
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const message = document.getElementById("message").value.trim();
+
+      const lines = [
+        "New Booking Request 💇‍♀️✨",
+        `Name: ${name}`,
+        phone ? `Customer Phone: ${phone}` : null,
+        `Service: ${service}`,
+        date ? `Preferred Date: ${date}` : null,
+        time ? `Preferred Time: ${time}` : null,
+        message ? `Notes: ${message}` : null
+      ].filter(Boolean);
+
+      const text = encodeURIComponent(lines.join("\n"));
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
