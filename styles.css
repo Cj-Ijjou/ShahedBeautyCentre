@@ -1,12 +1,13 @@
-/* ===== Reset ===== */
+/* ===== Overall Page display ===== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ===== Base colours & fonts ===== */
+/* ===== Base colours & fonts used for the default webpages ===== */
 :root {
+  /* Created variable names to reuse throughout the code */
   --bg-grey: #d5dae3;        /* page background */
   --panel-grey: #cfd3dd;     /* sections */
   --panel-dark: #b9beca;
@@ -31,6 +32,7 @@ main {
   padding: 2.5rem 1.5rem 3rem;
 }
 
+/* In all of the sections make a separation space at the bottom */
 section {
   margin-bottom: 3rem;
 }
